@@ -81,7 +81,7 @@ module.exports.passwordResetLink = async (req, res) => {
                 token: crypto.randomBytes(32).toString("hex")
             });
         }
-        let link = `http://localhost:3000/password-reset/${user._id}/${token.token}`;
+        let link = `http://localhost:3000/api/password-reset/${user._id}/${token.token}`;
         await mailer.sendEmail(user.email, link);
         return res.status(200).json({
             message: 'Password reset link sent successfully on email'
